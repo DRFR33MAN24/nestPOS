@@ -32,7 +32,6 @@ import { join } from 'path';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       playground: true,
-      typePaths: ['./**/*.graphql'],
     }),
   ],
   controllers: [AppController],
