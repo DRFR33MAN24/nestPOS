@@ -1,43 +1,29 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import { BelongsTo, Column, Model, Table } from 'sequelize-typescript';
 import { User } from '../users/user.model';
 
-@Table
-export class User extends Model {
+@Table({
+  charset: 'utf8',
+  collate: 'utf8_unicode_ci',
+})
+export class Payment extends Model {
   @Column
   id: number;
-
-  @Column({ defaultValue: true })
-  active: boolean;
 
   @Column
   name: string;
 
   @Column
-  country: string;
-
-  @Column
-  dateOfBirth: Date;
-
-  @Column
-  balance: number;
+  amount: number;
   @Column
   notificationToken: string;
 
   @Column
-  profileImg: string;
-  @Column
-  paypalMail: string;
-  @Column
-  cryptoWallet: string;
-  @Column
-  password: string;
-  @Column
-  oauthSignIn: boolean;
+  status: string;
 
   @Column
-  registerDate: Date;
+  date: Date;
 
   ///
-  @HasMany(() => Payment)
-  payments: Payment[];
+  @BelongsTo(() => User)
+  user: User;
 }
