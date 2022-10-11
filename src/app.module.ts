@@ -13,6 +13,8 @@ import { NotificationsModule } from './notifications/notifications.module';
 import { join } from 'path';
 import { TestModule } from './test/test.module';
 
+import { User } from './users/user.model';
+
 @Module({
   imports: [
     ProductsModule,
@@ -26,10 +28,10 @@ import { TestModule } from './test/test.module';
       dialect: 'mysql',
       host: 'localhost',
       port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'test',
-      models: [],
+      username: 'drfr33man24',
+      password: 'blackmesa-123',
+      database: 'earnmaster',
+      models: [User],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
