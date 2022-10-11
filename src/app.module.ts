@@ -11,6 +11,7 @@ import { OrdersModule } from './orders/orders.module';
 import { PaymentsModule } from './payments/payments.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { join } from 'path';
+import { TestModule } from './test/test.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { join } from 'path';
     OrdersModule,
     PaymentsModule,
     NotificationsModule,
+    TestModule,
     SequelizeModule.forRoot({
       dialect: 'mysql',
       host: 'localhost',
