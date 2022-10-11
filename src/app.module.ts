@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { SequelizeModule } from '@nestjs/sequelize';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
@@ -9,7 +12,27 @@ import { PaymentsModule } from './payments/payments.module';
 import { NotificationsModule } from './notifications/notifications.module';
 
 @Module({
-  imports: [ProductsModule, UsersModule, AdminsModule, OrdersModule, PaymentsModule, NotificationsModule],
+  imports: [
+    ProductsModule,
+    UsersModule,
+    AdminsModule,
+    OrdersModule,
+    PaymentsModule,
+    NotificationsModule,
+    SequelizeModule.forRoot({
+      dialect: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'root',
+      database: 'test',
+      models: [],
+    }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      playground: true,
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
