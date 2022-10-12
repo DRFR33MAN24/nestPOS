@@ -1,4 +1,4 @@
-import { Body, Injectable, Req } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -33,11 +33,8 @@ export class UsersService {
     private userModel: typeof User,
   ) {}
 
-  async create(
-    @Body() createUserDto: CreateUserDto,
-    @Req() request,
-  ): Promise<User> {
-    return this.userModel.create(request.user.id, createUserDto);
+  async create(createUserDto): Promise<User> {
+    return this.userModel.create(createUserDto);
   }
   async findAll(): Promise<User[]> {
     return this.userModel.findAll();
