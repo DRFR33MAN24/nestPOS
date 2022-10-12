@@ -12,10 +12,7 @@ import {
 } from 'sequelize-typescript';
 import { User } from '../users/user.model';
 import { UserProduct } from '../sharedModels/UserProduct.model';
-@Table({
-  charset: 'utf8',
-  collate: 'utf8_unicode_ci',
-})
+@Table
 export class Product extends Model {
   @PrimaryKey
   @AutoIncrement

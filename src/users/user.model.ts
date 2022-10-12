@@ -66,7 +66,7 @@ export class User extends Model {
   deletedAt: Date;
 
   ///
-  @HasMany(() => Payment)
+  @HasMany(() => Payment, 'user_id')
   payments: Payment[];
 
   @BelongsToMany(() => Product, () => UserProduct)

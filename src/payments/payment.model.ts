@@ -13,10 +13,7 @@ import {
 } from 'sequelize-typescript';
 import { User } from '../users/user.model';
 
-@Table({
-  charset: 'utf8',
-  collate: 'utf8_unicode_ci',
-})
+@Table
 export class Payment extends Model {
   @PrimaryKey
   @AutoIncrement
@@ -35,8 +32,6 @@ export class Payment extends Model {
 
   @Column
   amount: number;
-  @Column
-  notificationToken: string;
 
   @Column
   status: string;
@@ -57,6 +52,6 @@ export class Payment extends Model {
   deletedAt: Date;
 
   ///
-  @BelongsTo(() => User)
+  @BelongsTo(() => User, 'user_id')
   user: User;
 }
