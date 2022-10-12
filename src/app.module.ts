@@ -16,6 +16,7 @@ import { TestModule } from './test/test.module';
 import { User } from './users/user.model';
 import { Payment } from './payments/payment.model';
 import { Product } from './products/product.model';
+import { UserProduct } from './sharedModels/UserProduct.model';
 
 @Module({
   imports: [
@@ -33,8 +34,8 @@ import { Product } from './products/product.model';
       username: 'drfr33man24',
       password: 'blackmesa-123',
       database: 'neststore',
-      models: [User, Payment, Product],
-      autoLoadModels: true,
+      models: [User, Payment, Product, UserProduct],
+      autoLoadModels: false,
       synchronize: true,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({

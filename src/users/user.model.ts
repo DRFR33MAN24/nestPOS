@@ -9,7 +9,10 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
+  BelongsToMany,
 } from 'sequelize-typescript';
+import { Product } from 'src/products/product.model';
+import { UserProduct } from 'src/sharedModels/UserProduct.model';
 import { Payment } from '../payments/payment.model';
 
 @Table
@@ -65,4 +68,7 @@ export class User extends Model {
   ///
   @HasMany(() => Payment)
   payments: Payment[];
+
+  @BelongsToMany(() => Product, () => UserProduct)
+  products: Product[];
 }
