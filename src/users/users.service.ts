@@ -47,6 +47,15 @@ export class UsersService {
       },
     });
   }
+  findOneByName(name: string): Promise<User> {
+    return this.userModel.findOne({
+      where: {
+        name,
+      },
+      plain: true,
+      raw: true,
+    });
+  }
 
   async update(id: string): Promise<void> {
     const user = await this.findOne(id);
