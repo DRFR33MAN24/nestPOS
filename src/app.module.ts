@@ -17,6 +17,7 @@ import { User } from './users/user.model';
 import { Payment } from './payments/payment.model';
 import { Product } from './products/product.model';
 import { UserProduct } from './sharedModels/UserProduct.model';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { UserProduct } from './sharedModels/UserProduct.model';
       autoLoadModels: true,
       synchronize: true,
     }),
+    AuthModule,
     // GraphQLModule.forRoot<ApolloDriverConfig>({
     //   driver: ApolloDriver,
     //   typePaths: ['./**/*.graphql'],
