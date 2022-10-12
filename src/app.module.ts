@@ -14,6 +14,8 @@ import { join } from 'path';
 import { TestModule } from './test/test.module';
 
 import { User } from './users/user.model';
+import { Payment } from './payments/payment.model';
+import { Product } from './products/product.model';
 
 @Module({
   imports: [
@@ -30,8 +32,8 @@ import { User } from './users/user.model';
       port: 3306,
       username: 'drfr33man24',
       password: 'blackmesa-123',
-      database: 'earnmaster',
-      models: [User],
+      database: 'neststore',
+      models: [User, Payment, Product],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
