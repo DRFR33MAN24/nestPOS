@@ -34,6 +34,8 @@ import { Product } from './products/product.model';
       password: 'blackmesa-123',
       database: 'neststore',
       models: [User, Payment, Product],
+      autoLoadModels: true,
+      synchronize: true,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
