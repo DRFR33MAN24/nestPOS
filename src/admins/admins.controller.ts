@@ -8,6 +8,8 @@ import {
   Delete,
   UseGuards,
   Request,
+  forwardRef,
+  Inject,
 } from '@nestjs/common';
 import { AuthService } from 'src/auth/auth.service';
 import { JwtAuthGuard } from 'src/auth/jwt.auth.guard';
@@ -20,6 +22,7 @@ import { UpdateAdminDto } from './dto/update-admin.dto';
 export class AdminsController {
   constructor(
     private readonly adminsService: AdminsService,
+    @Inject(forwardRef(() => AuthService))
     private readonly authService: AuthService,
   ) {}
 

@@ -48,13 +48,15 @@ export class AdminsService {
     });
   }
   findOneByName(name: string): Promise<Admin> {
-    return this.adminModel.findOne({
+    const admin = this.adminModel.findOne({
       where: {
         name,
       },
       plain: true,
       raw: true,
     });
+
+    return admin;
   }
 
   async update(id: string): Promise<void> {
