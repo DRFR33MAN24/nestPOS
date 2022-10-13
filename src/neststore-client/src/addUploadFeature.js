@@ -1,14 +1,14 @@
 // import jsonServerProvider from "ra-data-json-server";
 // import dataProvider from "./dataProvider";
-import crudProvider from "ra-data-nestjsx-crud";
-
+import crudProvider from 'ra-data-nestjsx-crud';
+const dataProvider = crudProvider('http://localhost:5000');
 const addFilesToRequest = (type) => (resource, params) => {
   if (params.data.pictures === undefined) {
     // fallback to the default implementation
-    if (type === "update") {
-      return crudProvider.update(resource, params);
+    if (type === 'update') {
+      return dataProvider.update(resource, params);
     }
-    return crudProvider.create(resource, params);
+    return dataProvider.create(resource, params);
   }
 
   //console.log(params.data.pictures);
@@ -19,21 +19,21 @@ const addFilesToRequest = (type) => (resource, params) => {
 
   // Freshly dropped pictures are File objects and must be converted to base64 strings
   const newPictures = params.data.pictures.filter(
-    (p) => p.rawFile instanceof File
+    (p) => p.rawFile instanceof File,
   );
   const formerPictures = params.data.pictures.filter(
-    (p) => !(p.rawFile instanceof File)
+    (p) => !(p.rawFile instanceof File),
   );
   return Promise.all(newPictures.map(convertFileToBase64))
     .then((base64Pictures) =>
       base64Pictures.map((picture64) => ({
         src: picture64,
         title: `${params.data.title}`,
-      }))
+      })),
     )
     .then((transformedNewPictures) => {
-      if (type === "update") {
-        return crudProvider.update(resource, {
+      if (type === 'update') {
+        return dataProvider.update(resource, {
           ...params,
           data: {
             ...params.data,
@@ -41,7 +41,7 @@ const addFilesToRequest = (type) => (resource, params) => {
           },
         });
       }
-      return crudProvider.create(resource, {
+      return dataProvider.create(resource, {
         ...params,
         data: {
           ...params.data,
@@ -52,9 +52,9 @@ const addFilesToRequest = (type) => (resource, params) => {
 };
 
 const addUploadFeature = {
-  ...crudProvider,
-  update: addFilesToRequest("update"),
-  create: addFilesToRequest("create"),
+  ...dataProvider,
+  update: addFilesToRequest('update'),
+  create: addFilesToRequest('create'),
 };
 
 /**
