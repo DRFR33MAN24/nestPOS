@@ -1,21 +1,21 @@
 // in src/App.js
-import * as React from "react";
+import * as React from 'react';
 import {
   Admin,
   Resource,
   ListGuesser,
   EditGuesser,
   ShowGuesser,
-} from "react-admin";
-import { AdminList } from "./AdminList";
-import { OfferList, OfferCreate, OfferShow, OfferEdit } from "./OfferUI";
-import { UserCreate, UserEdit, UserList, UserShow } from "./UserUI";
-import { GameList, GameEdit, GameShow, GameCreate } from "./GameList";
-import authProvider from "./authProvider";
-import addUploadFeature from "./addUploadFeature";
+} from 'react-admin';
+import { AdminList } from './AdminList';
+import { OfferList, OfferCreate, OfferShow, OfferEdit } from './OfferUI';
+import { UserCreate, UserEdit, UserList, UserShow } from './UserUI';
+import { GameList, GameEdit, GameShow, GameCreate } from './GameList';
+import authProvider from './authProvider';
+import addUploadFeature from './addUploadFeature';
 
-import LoginPage from "./LoginPage";
-import { Dashboard } from "./Dashboard";
+import LoginPage from './LoginPage';
+import { Dashboard } from './Dashboard';
 //import jsonServerProvider from "ra-data-json-server";
 
 //const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
@@ -36,7 +36,7 @@ const App = () => (
       show={GameShow}
       create={GameCreate}
     /> */}
-    <Resource
+    {/* <Resource
       name="users"
       list={UserList}
       edit={UserEdit}
@@ -49,7 +49,7 @@ const App = () => (
       edit={OfferEdit}
       show={OfferShow}
       create={OfferCreate}
-    />
+    /> */}
   </Admin>
 );
 
