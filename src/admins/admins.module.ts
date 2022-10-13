@@ -6,9 +6,9 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
-  imports: [SequelizeModule.forFeature([Admin]), AuthModule],
+  imports: [SequelizeModule.forFeature([Admin])],
   exports: [AdminsService],
   controllers: [AdminsController],
-  providers: [AdminsService],
+  providers: [AdminsService, AuthModule],
 })
 export class AdminsModule {}
