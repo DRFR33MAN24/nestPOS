@@ -9,6 +9,6 @@ import { AuthModule } from 'src/auth/auth.module';
   imports: [SequelizeModule.forFeature([Admin]), forwardRef(() => AuthModule)],
   exports: [AdminsService],
   controllers: [AdminsController],
-  providers: [AdminsService, AuthModule],
+  providers: [AdminsService],
 })
 export class AdminsModule {}

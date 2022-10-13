@@ -7,12 +7,14 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.strategy';
 import { AdminsModule } from 'src/admins/admins.module';
+import { AdminsService } from 'src/admins/admins.service';
 
 @Module({
   imports: [
     // UsersModule,
     PassportModule,
     forwardRef(() => AdminsModule),
+
     JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: {

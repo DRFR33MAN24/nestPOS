@@ -58,7 +58,7 @@ export class AdminsController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('profile')
+  @Get('auth/profile')
   getProfile(@Request() req) {
     return req.user;
   }

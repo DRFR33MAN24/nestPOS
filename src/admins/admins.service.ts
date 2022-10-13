@@ -47,8 +47,8 @@ export class AdminsService {
       },
     });
   }
-  findOneByName(name: string): Promise<Admin> {
-    const admin = this.adminModel.findOne({
+  async findOneByName(name: string): Promise<Admin> {
+    const admin = await this.adminModel.findOne({
       where: {
         name,
       },
