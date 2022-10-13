@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { AdminsService } from './admins.service';
 import { AdminsController } from './admins.controller';
 import { Admin } from './admin.model';
@@ -6,7 +6,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
-  imports: [SequelizeModule.forFeature([Admin])],
+  imports: [SequelizeModule.forFeature([Admin]), forwardRef(() => AuthModule)],
   exports: [AdminsService],
   controllers: [AdminsController],
   providers: [AdminsService, AuthModule],
