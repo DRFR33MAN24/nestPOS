@@ -18,6 +18,7 @@ import { Payment } from './payments/payment.model';
 import { Product } from './products/product.model';
 import { UserProduct } from './sharedModels/UserProduct.model';
 import { AuthModule } from './auth/auth.module';
+import { Admin } from './admins/admin.model';
 
 @Module({
   imports: [
@@ -35,7 +36,7 @@ import { AuthModule } from './auth/auth.module';
       username: 'drfr33man24',
       password: 'blackmesa-123',
       database: 'neststore',
-      models: [User, Payment, Product, UserProduct],
+      models: [User, Payment, Product, UserProduct, Admin],
       autoLoadModels: true,
       synchronize: true,
     }),
