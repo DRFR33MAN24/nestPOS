@@ -33,7 +33,7 @@ export const AdminList = () => (
   <List>
     <Datagrid rowClick="show">
       <TextField source="id" />
-      <ImageField source="profileImg" />
+      <AdminImageField source="profileImg" />
       {/* 
       <TextField source="name" /> */}
       <EmailField source="email" />
