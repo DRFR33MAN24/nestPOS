@@ -23,7 +23,7 @@ export const httpClient = (url, options = {}) => {
   }
   const token = localStorage.getItem('token');
   options.headers.set('x-auth-token', token);
-  console.log(url, options);
+  //console.log(url, options);
   return fetchUtils.fetchJson(url, options);
 };
 
@@ -46,7 +46,7 @@ export default {
   },
 
   getOne: (resource, params) => {
-    console.log(params, resource);
+    // console.log(params, resource);
     return httpClient(`${apiUrl}/${resource}/${params.id}`).then(
       ({ json }) => ({
         data: json,
