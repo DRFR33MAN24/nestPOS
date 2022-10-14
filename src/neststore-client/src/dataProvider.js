@@ -11,18 +11,18 @@
 // };
 // const dataProvider = simpleRestProvider("http://localhost:3000/", fetchJson);
 
-import { fetchUtils } from "react-admin";
-import { stringify } from "query-string";
+import { fetchUtils } from 'react-admin';
+import { stringify } from 'query-string';
 
-export const apiUrl = "http://localhost:5000/api";
+export const apiUrl = 'http://localhost:5000';
 export const httpClient = (url, options = {}) => {
   if (!options.headers) {
     options.headers = new Headers({
-      Accept: "application/json",
+      Accept: 'application/json',
     });
   }
-  const token = localStorage.getItem("token");
-  options.headers.set("x-auth-token", token);
+  const token = localStorage.getItem('token');
+  options.headers.set('x-auth-token', token);
   //console.log(url, options);
   return fetchUtils.fetchJson(url, options);
 };
@@ -41,7 +41,7 @@ export default {
 
     return httpClient(url).then(({ headers, json }) => ({
       data: json,
-      total: headers.get("X-Total-Count"),
+      total: headers.get('X-Total-Count'),
     }));
   },
 
@@ -73,13 +73,13 @@ export default {
 
     return httpClient(url).then(({ headers, json }) => ({
       data: json,
-      total: parseInt(headers.get("content-range").split("/").pop(), 10),
+      total: parseInt(headers.get('content-range').split('/').pop(), 10),
     }));
   },
 
   create: (resource, params) =>
     httpClient(`${apiUrl}/${resource}`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(params.data),
     }).then(({ json }) => ({
       data: { ...params.data, id: json.id },
@@ -88,7 +88,7 @@ export default {
   update: (resource, params) => {
     console.log(params);
     return httpClient(`${apiUrl}/${resource}/${params.id}`, {
-      method: "PUT",
+      method: 'PUT',
       body: JSON.stringify(params.data),
     }).then(({ json }) => ({ data: json }));
   },
@@ -98,14 +98,14 @@ export default {
       filter: JSON.stringify({ id: params.ids }),
     };
     return httpClient(`${apiUrl}/${resource}?${stringify(query)}`, {
-      method: "PUT",
+      method: 'PUT',
       body: JSON.stringify(params.data),
     }).then(({ json }) => ({ data: json }));
   },
 
   delete: (resource, params) =>
     httpClient(`${apiUrl}/${resource}/${params.id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     }).then(({ json }) => ({ data: json })),
 
   deleteMany: (resource, params) => {
@@ -113,7 +113,7 @@ export default {
       filter: JSON.stringify({ id: params.ids }),
     };
     return httpClient(`${apiUrl}/${resource}?${stringify(query)}`, {
-      method: "DELETE",
+      method: 'DELETE',
       body: JSON.stringify(params.data),
     }).then(({ json }) => ({ data: json }));
   },
@@ -122,7 +122,7 @@ export default {
     (async function () {
       try {
         let json = await httpClient(`${apiUrl}/games/addPlayer`, {
-          method: "POST",
+          method: 'POST',
           body: JSON.stringify({ playerId: playerId, gameId: gameId }),
         });
         return json;
@@ -135,7 +135,7 @@ export default {
     (async function () {
       try {
         let json = await httpClient(`${apiUrl}/games/deletePlayer`, {
-          method: "POST",
+          method: 'POST',
           body: JSON.stringify({ playerId: playerId, gameId: gameId }),
         });
         return json;
@@ -148,7 +148,7 @@ export default {
     (async function () {
       try {
         let json = await httpClient(
-          `${apiUrl}/players/searchPlayers?searchQuery=${searchQuery}`
+          `${apiUrl}/players/searchPlayers?searchQuery=${searchQuery}`,
         );
         return json;
       } catch (error) {
@@ -160,7 +160,7 @@ export default {
     (async function () {
       try {
         let json = await httpClient(
-          `${apiUrl}/games/getGamePlayers/?gameId=${gameId}`
+          `${apiUrl}/games/getGamePlayers/?gameId=${gameId}`,
         );
 
         return json;

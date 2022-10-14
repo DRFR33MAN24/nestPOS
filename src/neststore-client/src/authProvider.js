@@ -1,9 +1,9 @@
 export default {
   login: ({ email, password }) => {
-    const request = new Request("http://localhost:5000/admins/login", {
-      method: "POST",
+    const request = new Request('http://localhost:5000/admins/auth/login', {
+      method: 'POST',
       body: JSON.stringify({ email, password }),
-      headers: new Headers({ "Content-Type": "application/json" }),
+      headers: new Headers({ 'Content-Type': 'application/json' }),
     });
     return fetch(request)
       .then((response) => {
@@ -16,37 +16,37 @@ export default {
         // store the token in local storage
         console.log(token);
         console.log(permissions);
-        localStorage.setItem("token", token);
-        localStorage.setItem("permissions", permissions);
+        localStorage.setItem('token', token);
+        localStorage.setItem('permissions', permissions);
       })
       .catch(() => {
-        throw new Error("Network error");
+        throw new Error('Network error');
       });
   },
   checkError: (error) => {
     const status = error.status;
     if (status === 401 || status === 403) {
-      localStorage.removeItem("token");
+      localStorage.removeItem('token');
       return Promise.reject();
     }
     // other error code (404, 500, etc): no need to log out
     return Promise.resolve();
   },
   checkAuth: () =>
-    localStorage.getItem("token") ? Promise.resolve() : Promise.reject(),
+    localStorage.getItem('token') ? Promise.resolve() : Promise.reject(),
 
   getPermissions: () => {
-    const role = localStorage.getItem("permissions");
+    const role = localStorage.getItem('permissions');
     return role ? Promise.resolve(role) : Promise.reject();
   },
   logout: () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
     return Promise.resolve();
   },
   getIdentity: () => {
     try {
       const { id, fullName, avatar } = JSON.parse(
-        localStorage.getItem("token")
+        localStorage.getItem('token'),
       );
       return Promise.resolve({ id, fullName, avatar });
     } catch (error) {

@@ -12,9 +12,9 @@ export const AdminList = () => (
     <Datagrid rowClick="edit">
       <TextField source="id" />
       <ImageField source="profileImg" />
-
-      <TextField source="name" />
-      {/* <EmailField source="email" /> */}
+      {/* 
+      <TextField source="name" /> */}
+      <EmailField source="email" />
     </Datagrid>
   </List>
 );

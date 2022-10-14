@@ -19,12 +19,12 @@ import { Dashboard } from './Dashboard';
 //import jsonServerProvider from "ra-data-json-server";
 
 //const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
-
+import dataProvider from './dataProvider';
 const App = () => (
   <Admin
     dashboard={Dashboard}
     loginPage={LoginPage}
-    dataProvider={addUploadFeature}
+    dataProvider={dataProvider}
     authProvider={authProvider}
   >
     <Resource name="admins" list={AdminList} />
