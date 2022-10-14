@@ -10,7 +10,9 @@ import {
   Request,
   forwardRef,
   Inject,
+  UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { AuthService } from 'src/auth/auth.service';
 import { JwtAuthGuard } from 'src/auth/jwt.auth.guard';
 import { LocalAuthGuard } from 'src/auth/local.auth.guard';
@@ -25,7 +27,7 @@ export class AdminsController {
     @Inject(forwardRef(() => AuthService))
     private readonly authService: AuthService,
   ) {}
-
+  @UseInterceptors(FileInterceptor('file'))
   @Post()
   create(@Body() createAdminDto: CreateAdminDto) {
     return this.adminsService.create(createAdminDto);
