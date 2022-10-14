@@ -31,8 +31,8 @@ export class AdminsController {
   @UseInterceptors(FileInterceptor('file'))
   @Post()
   create(
-    @UploadedFile() file: Express.Multer.File,
     @Body() createAdminDto: CreateAdminDto,
+    @UploadedFile() file: Express.Multer.File,
   ) {
     return this.adminsService.create(createAdminDto);
   }
