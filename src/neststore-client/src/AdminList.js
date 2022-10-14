@@ -17,6 +17,8 @@ import {
   ImageInput,
   SimpleForm,
   Create,
+  ShowButton,
+  EditButton,
 } from 'react-admin';
 
 const validateEmail = [required(), minLength(2), maxLength(15)];
@@ -37,6 +39,7 @@ export const AdminList = () => (
       {/* 
       <TextField source="name" /> */}
       <EmailField source="email" />
+      <EditButton />
     </Datagrid>
   </List>
 );

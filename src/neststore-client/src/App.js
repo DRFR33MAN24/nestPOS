@@ -35,28 +35,6 @@ const App = () => (
       show={AdminShow}
       create={AdminCreate}
     />
-
-    {/* <Resource
-      name="games"
-      list={GameList}
-      edit={GameEdit}
-      show={GameShow}
-      create={GameCreate}
-    /> */}
-    {/* <Resource
-      name="users"
-      list={UserList}
-      edit={UserEdit}
-      show={UserShow}
-      create={UserCreate}
-    />
-    <Resource
-      name="offers"
-      list={OfferList}
-      edit={OfferEdit}
-      show={OfferShow}
-      create={OfferCreate}
-    /> */}
   </Admin>
 );
 
