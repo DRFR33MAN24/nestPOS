@@ -11,6 +11,7 @@ import {
   forwardRef,
   Inject,
   UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AuthService } from 'src/auth/auth.service';
@@ -29,7 +30,10 @@ export class AdminsController {
   ) {}
   @UseInterceptors(FileInterceptor('file'))
   @Post()
-  create(@Body() createAdminDto: CreateAdminDto) {
+  create(
+    @UploadedFile() file: Express.Multer.File,
+    @Body() createAdminDto: CreateAdminDto,
+  ) {
     return this.adminsService.create(createAdminDto);
   }
 
