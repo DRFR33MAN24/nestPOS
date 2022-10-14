@@ -1,5 +1,5 @@
 export class CreateAdminDto {
-  name: string;
+  email: string;
   mail: string;
   profileImg: string;
   password: string;

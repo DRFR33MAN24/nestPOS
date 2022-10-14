@@ -54,12 +54,12 @@ export class AdminsController {
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req) {
-    return this.authService.login(req.user);
+    return this.authService.login(req.admin);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('auth/profile')
   getProfile(@Request() req) {
-    return req.user;
+    return req.admin;
   }
 }

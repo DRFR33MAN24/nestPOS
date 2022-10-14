@@ -23,7 +23,7 @@ export class Admin extends Model {
   active: boolean;
 
   @Column
-  name: string;
+  email: string;
 
   @Column
   profileImg: string;

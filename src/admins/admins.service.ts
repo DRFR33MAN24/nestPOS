@@ -47,10 +47,10 @@ export class AdminsService {
       },
     });
   }
-  async findOneByName(name: string): Promise<Admin> {
-    const admin = await this.adminModel.findOne({
+  findOneByEmail(email: string): Promise<Admin> {
+    const admin = this.adminModel.findOne({
       where: {
-        name,
+        email,
       },
       plain: true,
       raw: true,

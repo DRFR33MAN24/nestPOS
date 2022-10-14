@@ -12,7 +12,9 @@ import { AdminsService } from 'src/admins/admins.service';
 @Module({
   imports: [
     // UsersModule,
-    PassportModule,
+    PassportModule.register({
+      property: 'admin',
+    }),
     forwardRef(() => AdminsModule),
 
     JwtModule.register({
