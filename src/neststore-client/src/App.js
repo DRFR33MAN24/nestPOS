@@ -7,7 +7,7 @@ import {
   EditGuesser,
   ShowGuesser,
 } from 'react-admin';
-import { AdminList } from './AdminList';
+import { AdminList, ad, AdminCreate, AdminShow } from './AdminList';
 import { OfferList, OfferCreate, OfferShow, OfferEdit } from './OfferUI';
 import { UserCreate, UserEdit, UserList, UserShow } from './UserUI';
 import { GameList, GameEdit, GameShow, GameCreate } from './GameList';
@@ -20,6 +20,8 @@ import { Dashboard } from './Dashboard';
 
 //const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
 import dataProvider from './dataProvider';
+// import crudProvider from 'ra-data-nestjsx-crud';
+// let dataProvider = crudProvider('http://localhost:5000');
 const App = () => (
   <Admin
     dashboard={Dashboard}
@@ -27,7 +29,12 @@ const App = () => (
     dataProvider={dataProvider}
     authProvider={authProvider}
   >
-    <Resource name="admins" list={AdminList} />
+    <Resource
+      name="admins"
+      list={AdminList}
+      show={AdminShow}
+      create={AdminCreate}
+    />
 
     {/* <Resource
       name="games"

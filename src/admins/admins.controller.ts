@@ -38,6 +38,7 @@ export class AdminsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
+    console.log(id);
     return this.adminsService.findOne(id);
   }
 
