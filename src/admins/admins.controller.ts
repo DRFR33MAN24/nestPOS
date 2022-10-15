@@ -63,12 +63,15 @@ export class AdminsController {
     @Body() createAdminDto: CreateAdminDto,
     @UploadedFile() file: Express.Multer.File,
   ) {
-    return this.adminsService.create(createAdminDto);
+    return this.adminsService.create({
+      ...createAdminDto,
+      profileImg: file.filename,
+    });
   }
 
-  @Get('profileImg')
-  seeUploadedFile(@Param('imgpath') image, @Res() res) {
-    return res.sendFile(image, { root: './files' });
+  @Get('getFile')
+  seeUploadedFile(@Param('fileName') file, @Res() res) {
+    return res.sendFile(file, { root: './files' });
   }
 
   @Get()

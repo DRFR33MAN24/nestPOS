@@ -71,7 +71,7 @@ export const AdminImageField = (props) => {
   return record ? (
     <div>
       <img
-        src={url + record[props.source]}
+        src={`${url}/getFile?fileName=${record[props.source]}`}
         title="profileImg"
         width="64"
         height="64"
