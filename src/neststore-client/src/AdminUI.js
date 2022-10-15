@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   List,
   Datagrid,
@@ -67,6 +68,7 @@ export const AdminImageField = (props) => {
   const record = useRecordContext(props);
   const url = useDataProvider().apiUrl;
   // console.log(record);
+  useEffect(() => {}, []);
   return record ? (
     <div>
       <img
