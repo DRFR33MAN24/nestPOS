@@ -54,7 +54,7 @@ export class AdminsController {
         destination: './files',
         filename: editFileName,
       }),
-      fileFilter: imageFileFilter,
+      // fileFilter: imageFileFilter,
     }),
   )
   @Post()
