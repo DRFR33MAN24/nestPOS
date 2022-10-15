@@ -82,10 +82,11 @@ export default {
   },
 
   create: (resource, params) => {
-    console.log(params.data);
+    console.log(params, resource);
     const formData = new FormData();
     for (const param in params.data) {
       // 1 file
+      console.log(param);
       if (param === 'file') {
         formData.append('file', params.data[param].rawFile);
         continue;
@@ -101,18 +102,20 @@ export default {
 
       formData.append(param, params.data[param]);
     }
-    httpClient(`${apiUrl}/${resource}`, {
+    return httpClient(`${apiUrl}/${resource}`, {
       method: 'POST',
       body: formData,
       headers: new Headers({
         Accept: 'multipart/form-data',
       }),
-    }).then(({ json }) => {
-      console.log(json);
-      return {
-        data: { ...params.data, id: json.id },
-      };
-    });
+    })
+      .then(({ json }) => {
+        console.log(json);
+        return {
+          data: { ...params.data, id: json.id },
+        };
+      })
+      .catch((err) => console.log(err));
   },
 
   update: (resource, params) => {
