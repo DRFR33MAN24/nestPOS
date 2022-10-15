@@ -48,11 +48,11 @@ export class AdminsController {
     @Inject(forwardRef(() => AuthService))
     private readonly authService: AuthService,
   ) {}
+
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
         destination: './files',
-        filename: editFileName,
       }),
       // fileFilter: imageFileFilter,
     }),

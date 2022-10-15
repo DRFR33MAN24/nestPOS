@@ -19,6 +19,7 @@ import { Product } from './products/product.model';
 import { UserProduct } from './sharedModels/UserProduct.model';
 import { AuthModule } from './auth/auth.module';
 import { Admin } from './admins/admin.model';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
@@ -41,6 +42,9 @@ import { Admin } from './admins/admin.model';
       synchronize: true,
     }),
     AuthModule,
+    MulterModule.register({
+      dest: './files',
+    }),
     // GraphQLModule.forRoot<ApolloDriverConfig>({
     //   driver: ApolloDriver,
     //   typePaths: ['./**/*.graphql'],
