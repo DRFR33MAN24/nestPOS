@@ -106,9 +106,12 @@ export default {
       headers: new Headers({
         Accept: 'multipart/form-data',
       }),
-    }).then(({ json }) => ({
-      data: json,
-    }));
+    }).then(({ json }) => {
+      console.log(json);
+      return {
+        data: { ...params.data, id: json.id },
+      };
+    });
   },
 
   update: (resource, params) => {

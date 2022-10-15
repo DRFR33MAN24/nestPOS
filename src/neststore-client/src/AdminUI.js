@@ -19,9 +19,11 @@ import {
   Create,
   ShowButton,
   EditButton,
+  email,
+  DeleteButton,
 } from 'react-admin';
 
-const validateEmail = [required(), minLength(2), maxLength(15)];
+const validateEmail = [required(), email()];
 const validatePassword = [required(), minLength(2), maxLength(15)];
 export const AdminShow = () => (
   <Show>
@@ -40,6 +42,7 @@ export const AdminList = () => (
       <TextField source="name" /> */}
       <EmailField source="email" />
       <EditButton />
+      <DeleteButton />
     </Datagrid>
   </List>
 );

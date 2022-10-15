@@ -7,7 +7,7 @@ import {
   EditGuesser,
   ShowGuesser,
 } from 'react-admin';
-import { AdminList, ad, AdminCreate, AdminShow } from './AdminList';
+import { AdminList, ad, AdminCreate, AdminShow } from './AdminUI';
 import { OfferList, OfferCreate, OfferShow, OfferEdit } from './OfferUI';
 import { UserCreate, UserEdit, UserList, UserShow } from './UserUI';
 import { GameList, GameEdit, GameShow, GameCreate } from './GameList';
