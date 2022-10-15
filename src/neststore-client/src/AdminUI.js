@@ -67,12 +67,11 @@ export const AdminCreate = () => (
 export const AdminImageField = (props) => {
   const record = useRecordContext(props);
   const url = useDataProvider().apiUrl;
-  // console.log(record);
-  useEffect(() => {}, []);
+
   return record ? (
     <div>
       <img
-        src={record[props.source]}
+        src={url + record[props.source]}
         title="profileImg"
         width="64"
         height="64"

@@ -66,7 +66,7 @@ export class AdminsController {
     return this.adminsService.create(createAdminDto);
   }
 
-  @Get('profileImage')
+  @Get('profileImg')
   seeUploadedFile(@Param('imgpath') image, @Res() res) {
     return res.sendFile(image, { root: './files' });
   }
