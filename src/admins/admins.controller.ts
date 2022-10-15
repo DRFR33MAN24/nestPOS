@@ -53,8 +53,9 @@ export class AdminsController {
     FileInterceptor('file', {
       storage: diskStorage({
         destination: './files',
+        filename: editFileName,
       }),
-      // fileFilter: imageFileFilter,
+      fileFilter: imageFileFilter,
     }),
   )
   @Post()
@@ -62,7 +63,6 @@ export class AdminsController {
     @Body() createAdminDto: CreateAdminDto,
     @UploadedFile() file: Express.Multer.File,
   ) {
-    //console.log(createAdminDto, file);
     return this.adminsService.create(createAdminDto);
   }
 

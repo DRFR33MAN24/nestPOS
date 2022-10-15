@@ -82,13 +82,13 @@ export default {
   },
 
   create: (resource, params) => {
-    console.log(params, resource);
+    // console.log(params, resource);
     const formData = new FormData();
     for (const param in params.data) {
       // 1 file
-      console.log(param);
+      // console.log(param);
       if (param === 'file') {
-        formData.append('file', params.data[param].rawFile);
+        formData.append('file', params.data[param][0].rawFile);
         continue;
       }
 
@@ -102,6 +102,7 @@ export default {
 
       formData.append(param, params.data[param]);
     }
+
     return httpClient(`${apiUrl}/${resource}`, {
       method: 'POST',
       body: formData,
