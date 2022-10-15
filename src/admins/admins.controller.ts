@@ -52,13 +52,15 @@ export class AdminsController {
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
-        destination: './files',
+        destination: function (req, file, callback) {
+          callback(null, './files');
+        },
       }),
       // fileFilter: imageFileFilter,
     }),
   )
   @Post()
-  create(
+  async create(
     @Body() createAdminDto: CreateAdminDto,
     @UploadedFile() file: Express.Multer.File,
   ) {
