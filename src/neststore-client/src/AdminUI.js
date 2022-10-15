@@ -21,6 +21,7 @@ import {
   EditButton,
   email,
   DeleteButton,
+  useDataProvider,
 } from 'react-admin';
 
 const validateEmail = [required(), email()];
@@ -64,6 +65,7 @@ export const AdminCreate = () => (
 
 export const AdminImageField = (props) => {
   const record = useRecordContext(props);
+  const url = useDataProvider().apiUrl;
   // console.log(record);
   return record ? (
     <div>

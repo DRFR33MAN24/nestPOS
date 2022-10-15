@@ -28,6 +28,7 @@ export const httpClient = (url, options = {}) => {
 };
 
 export default {
+  apiUrl: apiUrl,
   getList: (resource, params) => {
     //console.log("getList called", params);
     const { page, perPage } = params.pagination;
