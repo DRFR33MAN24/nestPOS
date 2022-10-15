@@ -82,6 +82,7 @@ export default {
   },
 
   create: (resource, params) => {
+    console.log(params.data);
     const formData = new FormData();
     for (const param in params.data) {
       // 1 file

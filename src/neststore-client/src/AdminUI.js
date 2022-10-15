@@ -55,7 +55,7 @@ export const AdminCreate = () => (
       <TextInput source="email" validate={validateEmail} />
       <TextInput source="password" validate={validatePassword} />
 
-      <ImageInput source="pictures" multiple={true} accept="image/png">
+      <ImageInput source="file" multiple={true} accept="image/png">
         <ImageField source="src" title="profile image" />
       </ImageInput>
     </SimpleForm>

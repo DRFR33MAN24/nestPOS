@@ -19,7 +19,7 @@ import { Dashboard } from './Dashboard';
 //import jsonServerProvider from "ra-data-json-server";
 
 //const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
-import dataProvider from './dataProvider';
+import dataProvider from './multipartDataProvider';
 // import crudProvider from 'ra-data-nestjsx-crud';
 // let dataProvider = crudProvider('http://localhost:5000');
 const App = () => (
