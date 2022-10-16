@@ -84,10 +84,26 @@ export class AdminsController {
     return this.adminsService.findOne(id);
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  //   return this.usersService.update(+id, updateUserDto);
-  // }
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './files',
+        // filename: editFileName,
+      }),
+      fileFilter: imageFileFilter,
+    }),
+  )
+  @Patch(':id')
+  update(
+    @Param('id') id: string,
+    @Body() updateAdminDto: UpdateAdminDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    return this.adminsService.update(+id, {
+      ...updateAdminDto,
+      profileImg: file.filename,
+    });
+  }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
