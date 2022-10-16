@@ -23,6 +23,7 @@ import {
   email,
   DeleteButton,
   useDataProvider,
+  Edit,
 } from 'react-admin';
 import { apiUrl } from './multipartDataProvider';
 
@@ -39,7 +40,6 @@ export const AdminShow = () => (
 export const AdminList = () => (
   <List>
     <Datagrid rowClick="show">
-      <TextField source="id" />
       <CustomImageField
         source="profileImg"
         width={64}
@@ -68,6 +68,20 @@ export const AdminCreate = () => (
       </ImageInput>
     </SimpleForm>
   </Create>
+);
+export const AdminEdit = () => (
+  <Edit>
+    <SimpleForm>
+      <TextInput disabled source="id" />
+
+      <TextInput source="email" validate={validateEmail} />
+      <TextInput source="password" validate={validatePassword} />
+      <CustomImageField source="profileImg" width={96} height={96} />
+      <ImageInput source="file" multiple={true} accept="image/png">
+        <ImageField source="src" title="profile image" />
+      </ImageInput>
+    </SimpleForm>
+  </Edit>
 );
 
 export const CustomImageField = (props) => {

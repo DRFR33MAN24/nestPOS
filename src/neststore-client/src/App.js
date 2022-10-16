@@ -7,7 +7,7 @@ import {
   EditGuesser,
   ShowGuesser,
 } from 'react-admin';
-import { AdminList, ad, AdminCreate, AdminShow } from './AdminUI';
+import { AdminList, ad, AdminCreate, AdminShow, AdminEdit } from './AdminUI';
 import { OfferList, OfferCreate, OfferShow, OfferEdit } from './OfferUI';
 import { UserCreate, UserEdit, UserList, UserShow } from './UserUI';
 import { GameList, GameEdit, GameShow, GameCreate } from './GameList';
@@ -34,6 +34,7 @@ const App = () => (
       list={AdminList}
       show={AdminShow}
       create={AdminCreate}
+      edit={AdminEdit}
     />
   </Admin>
 );
