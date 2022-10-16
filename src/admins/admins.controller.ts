@@ -53,7 +53,7 @@ export class AdminsController {
     FileInterceptor('file', {
       storage: diskStorage({
         destination: './files',
-        filename: editFileName,
+        // filename: editFileName,
       }),
       fileFilter: imageFileFilter,
     }),
@@ -68,8 +68,7 @@ export class AdminsController {
       profileImg: file.filename,
     });
   }
-
-  @Get('getFile')
+  @Get('getFile/:fileName')
   seeUploadedFile(@Param('fileName') file, @Res() res) {
     return res.sendFile(file, { root: './files' });
   }

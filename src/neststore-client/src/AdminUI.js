@@ -24,13 +24,14 @@ import {
   DeleteButton,
   useDataProvider,
 } from 'react-admin';
+import { apiUrl } from './multipartDataProvider';
 
 const validateEmail = [required(), email()];
 const validatePassword = [required(), minLength(2), maxLength(15)];
 export const AdminShow = () => (
   <Show>
     <SimpleShowLayout>
-      <AdminImageField source="profileImg" />
+      <CustomImageField source="profileImg" />
       <TextField source="email" />
     </SimpleShowLayout>
   </Show>
@@ -39,7 +40,12 @@ export const AdminList = () => (
   <List>
     <Datagrid rowClick="show">
       <TextField source="id" />
-      <AdminImageField source="profileImg" />
+      <CustomImageField
+        source="profileImg"
+        width={64}
+        height={64}
+        style={{ borderRadius: '64px' }}
+      />
       {/* 
       <TextField source="name" /> */}
       <EmailField source="email" />
@@ -64,20 +70,18 @@ export const AdminCreate = () => (
   </Create>
 );
 
-export const AdminImageField = (props) => {
+export const CustomImageField = (props) => {
   const record = useRecordContext(props);
-  const url = useDataProvider().apiUrl;
 
+  const imgSrc = `${apiUrl}/admins/getFile/${record[props.source]}`;
   return record ? (
     <div>
       <img
-        src={`${url}/getFile?fileName=${record[props.source]}`}
-        title="profileImg"
-        width="64"
-        height="64"
-        style={{
-          borderRadius: '64px',
-        }}
+        src={imgSrc}
+        title={props.title}
+        width={props.width}
+        height={props.height}
+        style={props.style}
       />
     </div>
   ) : null;
