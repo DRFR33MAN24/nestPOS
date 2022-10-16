@@ -99,7 +99,7 @@ export class AdminsController {
     @Body() updateAdminDto: UpdateAdminDto,
     @UploadedFile() file: Express.Multer.File,
   ) {
-    return this.adminsService.update(+id, {
+    return this.adminsService.update(id, {
       ...updateAdminDto,
       profileImg: file.filename,
     });

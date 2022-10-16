@@ -59,9 +59,12 @@ export class AdminsService {
     return admin;
   }
 
-  async update(id: string): Promise<void> {
-    const admin = await this.findOne(id);
-    await admin.destroy();
+  async update(id: string, updateAdminDto: UpdateAdminDto): Promise<void> {
+    const admin = await this.adminModel.update(updateAdminDto, {
+      where: {
+        id,
+      },
+    });
   }
   async remove(id: string): Promise<void> {
     const admin = await this.findOne(id);
